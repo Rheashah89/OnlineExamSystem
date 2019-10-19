@@ -4,9 +4,12 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +17,8 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="USER_GENERATOR")
+	@SequenceGenerator(name="USER_GENERATOR", sequenceName="USER_GENERATOR",allocationSize=1)
 	@Column(name="USER_ID")
 	private int userID;
 	
